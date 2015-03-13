@@ -1,0 +1,3 @@
+{"amznid-1":{"type":"RequestHandlingConfiguration","version":"2.0","value":{"*ast*":{"type":"AbstractSyntaxTree","value":[["contains","mobile-wifi",["valueOf","opf.client-ip"]]]
+},"mobile-wifi":{"type":"IPSet","value":[["74.202.210.82","74.202.210.82"],["216.64.167.154","216.64.167.154"]]}}}}
+

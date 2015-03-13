@@ -1,0 +1,73 @@
+{
+    "amznid-1": {
+        "type": "RequestHandlingConfiguration",
+        "value": {
+            "*ast*": {
+                "type": "AbstractSyntaxTree",
+                "value": [
+                    "switch",
+                    [
+                        "valueOf",
+                        "opf.tenant"
+                    ],
+                    "www.amazon.com",
+                    [
+                        "statements",
+                        [
+                            "ifThen",
+                            [
+                                "storeVarValue",
+                                "bar",
+                                [
+                                    "!!!",
+                                    [
+                                        "==",
+                                        5,
+                                        5
+                                    ]
+                                ]
+                            ],
+                            [
+                                "setTagEffect",
+                                "bar",
+                                0
+                            ]
+                        ],
+                        [
+                            "publishTags"
+                        ]
+                    ],
+                    "www.amazon.co.jp",
+                    [
+                        "statements",
+                        [
+                            "ifThen",
+                            [
+                                "storeVarValue",
+                                "bar",
+                                [
+                                    "!!!",
+                                    [
+                                        "==",
+                                        5,
+                                        5
+                                    ]
+                                ]
+                            ],
+                            [
+                                "setTagEffect",
+                                "bar",
+                                0
+                            ]
+                        ],
+                        [
+                            "publishTags"
+                        ]
+                    ]
+                ]
+            }
+        },
+        "version": "2.0"
+    }
+}
+

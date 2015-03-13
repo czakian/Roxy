@@ -1,0 +1,37 @@
+{
+  "amznid-1":{
+    "type":"RequestHandlingConfiguration",
+    "version":"2.0",
+    "value":{
+      "*ast*":{
+        "type":"AbstractSyntaxTree",
+        "value":
+          ["switch",
+        ["valueOf","opf.domain-name"],
+        "www.amazon.cn",
+        ["statements",
+        ["ifThen",["storeVarValue","SELF_SERVICE_OPF_BLACKLIST",
+        ["&&&",
+        ["stringBeginsWith",["valueOf","http.uri.path"],"/gp/flex/sign-in/select.html"],
+        ["tableContains",["tableRef","SELF_SERVICE_OPF_BLACKLIST:ip-table:www.amazon.cn/gp/flex/sign-in/select.html"],["valueOf","opf.client-ip"]]
+          ]],
+        ["setTagEffect","SELF_SERVICE_OPF_BLACKLIST",0]
+          ],
+        ["publishTags"],
+        ["ifThen",["testTag","SELF_SERVICE_OPF_BLACKLIST"],
+        ["publishActionValueTag","BLOCK",
+        ["loadVarValue","SELF_SERVICE_OPF_BLACKLIST"],
+        "SELF_SERVICE_OPF_BLACKLIST"
+          ]
+          ]
+          ],
+        ["stringAction","SHOULD_NOT_REACH_HERE","other_tenant.html"]
+          ]
+      },
+      "SELF_SERVICE_OPF_BLACKLIST:ip-table:www.amazon.cn/gp/flex/sign-in/select.html":{
+        "type":"DataTable",
+        "value":["1.1.1.1"]
+      }
+    }
+  }
+}

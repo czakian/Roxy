@@ -1,0 +1,69 @@
+Name:                roxy
+Version:             0.1.0
+Synopsis:            A high performance and modular reverse proxy server
+Description:         A high performance and modular reverse proxy server
+License:             GPL-3
+Author:              Author christopher zakian
+Maintainer:          czakian@gmail.com
+Stability:           Experimental
+Category:            Servers
+Build-type:          Simple
+Cabal-version:       >=1.8
+
+-- here is a great tutorial on how to cabal: http://stackoverflow.com/questions/12305970/how-to-make-a-haskell-cabal-project-with-libraryexecutables-that-still-run-with
+
+-- compiler backend library
+library 
+  hs-source-dirs: src
+  ghc-options: -O3 -threaded +RTS -N 
+  exposed-modules:
+    --Roxy.Connect
+    Roxy.Proxy
+    Roxy.Util
+    Roxy.HTTPProxy
+  build-depends:
+    -- aeson             >= 0.8,
+    async                >= 2.0,
+    conduit              >= 0.2.4,
+    conduit-combinators  >= 0.3,
+    conduit-extra        >= 1.1,
+    containers           >= 0.5,
+    base                 >= 4 && <= 5,
+    bytestring           >= 0.10,
+    network-conduit      >= 1.0.4,
+    network              >= 2.6,
+    scientific           >= 0.3,
+    stm                  >= 2.4,
+    stm-conduit          >= 0.4.1,
+    streaming-commons    >= 0.1.9,
+    text                 >= 0.11,
+    transformers         >= 0.3.0.0,
+    unordered-containers >= 0.2,
+    vector               >= 0.10
+ 
+--executable for calling the backend target
+executable run-roxy
+  hs-source-dirs: exec
+  main-is: Main.hs
+  build-depends:
+    base >= 4 && < 5,
+    roxy
+  -- other-modules:
+
+Test-Suite test-parser
+  type: exitcode-stdio-1.0
+  main-is: TestParser.hs
+  hs-source-dirs: tests
+  build-depends: 
+    base >= 4 && < 5,
+    Cabal >= 1.8,
+    test-framework,
+    test-framework-hunit,
+    HUnit,
+    containers == 0.5.*,
+    bytestring >= 0.10,
+    text >= 1.2,
+    roxy
+
+  
+  

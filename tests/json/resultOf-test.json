@@ -1,0 +1,13 @@
+{
+  "amznid-1":{
+    "type":"RequestHandlingConfiguration",
+    "version":"2.0",
+    "value":{
+      "*ast*":{
+        "type":"AbstractSyntaxTree",
+        "value":[ "resultOf", "some-tagger" ] 
+      }
+    }
+  }
+}
+
