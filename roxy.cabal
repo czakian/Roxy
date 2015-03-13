@@ -21,6 +21,7 @@ library
     Roxy.Proxy
     Roxy.Util
     Roxy.HTTPProxy
+    Roxy.HTTPClassify
   build-depends:
     -- aeson             >= 0.8,
     async                >= 2.0,

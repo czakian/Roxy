@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings, RecordWildCards, LambdaCase, DoAndIfThenElse #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Roxy.HTTPProxy where 
 

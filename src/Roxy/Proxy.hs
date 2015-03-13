@@ -10,7 +10,7 @@ import qualified Data.Conduit.Binary    as CB
 import qualified Data.Conduit.List      as CL
 import Data.Conduit.Network (serverSettings, appSource, runTCPServer, ServerSettings)
 import Data.Streaming.Network (AppData)
-import Roxy.HTTPProxy
+import Roxy.HTTPProxy 
 
 -- | Handle a tcp connection. Right now the handler assumes all incoming connections come in
 -- as HTTP requests which may then be upgraded to websockets. 
