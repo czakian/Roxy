@@ -5,16 +5,10 @@ module Roxy.HTTPClassify where
 import Conduit
 import Control.Exception (evaluate)
 import qualified Data.ByteString.Char8  as BS
-import qualified Data.Conduit.Binary    as CB
-import qualified Data.Conduit.List      as CL
-import qualified Data.Conduit.Network   as CN
 import qualified Data.Map               as MP
-import Data.Streaming.Network (AppData, appCloseConnection)
 import System.Timeout (timeout)
 
 import Roxy.Types
-import Roxy.Util
-
 
 --- Logical Expression Language For Classifying HTTP Requests ---
 
