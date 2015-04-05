@@ -14,10 +14,11 @@ import Roxy.Types
 import Roxy.Util
 
 
--- | Handle an http connection
+-- | Handle an HTTP connection
 httpHandler :: AppData -> ResumableStream -> RequestLine -> Headers -> IO ()
 httpHandler appData stream requestLine headers = do 
- appCloseConnection appData
+  putStrLn $ show requestLine 
+  appCloseConnection appData
   --return ()
 -- TODO use some resumable resource again here: see http://www.yesodweb.com/blog/2012/06/conduit-0-5 (look for $$++ since we are resuming)
 --  yield statusLine
@@ -26,7 +27,16 @@ httpHandler appData stream requestLine headers = do
 
 -- | Reads an HTTP request line as part of a 'Data.Conduit.Source' pipeline.
 readRequestLine :: Sink ByteString IO RequestLine
-readRequestLine = takeLine
+readRequestLine = do
+  let space  = 32
+  method  <- CB.takeWhile (/= space) =$ CL.consume
+  _       <- CB.takeWhile (== space) =$ CL.consume
+  uri     <- CB.takeWhile (/= space) =$ CL.consume
+  _       <- CB.takeWhile (== space) =$ CL.consume
+  version <- CB.takeWhile (/= space) =$ CL.consume
+  return $! MP.fromList $ map (stripCRLF) [("method", method), ("uri", uri), ("version", version)]
+  where
+    stripCRLF (k, v) = (k, BS.takeWhile (/= '\r') $ BS.concat v)
 
 
 -- | Reads HTTP headers as part of a 'Data.Conduit.Source' pipeline.
