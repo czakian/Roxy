@@ -8,19 +8,16 @@ import Prelude hiding(lookup)
 -- | Define that an environment must provide a lookup function for variables. 
 -- The actual data structure of the environment must be provided by the user. 
 class Env env where
-  lookup ::  ByteString -> env -> SealedPrim
-  extend :: ByteString -> SealedPrim -> env -> env
+  lookup ::  ByteString -> env -> Prim a
+  extend :: ByteString -> Prim a -> env -> env
 
 --TODO: this doesn't work right with the env typeclass above.
 data Prim a where
-    I   :: Int        -> Prim Int
-    B   :: Bool       -> Prim Bool
-    S   :: ByteString -> Prim ByteString
-    IP  :: ByteString -> Prim ByteString
-    Var :: ByteString -> Prim ByteString
-
-data SealedPrim where
-  SealedPrim :: Prim a -> SealedPrim
+    I   :: Int        -> Prim a
+    B   :: Bool       -> Prim a
+    S   :: ByteString -> Prim a
+    IP  :: ByteString -> Prim a
+    Var :: ByteString -> Prim a
 
 data Expr a where
     Not :: Expr Bool  -> Expr Bool

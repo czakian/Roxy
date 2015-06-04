@@ -29,7 +29,7 @@ data Route =
 data HTTPEnv = HTTPEnv RequestLine Headers (MP.Map ByteString ByteString)
 
 instance Env HTTPEnv where
-  lookup var env = SealedPrim $ I 5
+  lookup var env = I 5
   extend var val env = env
 
 
