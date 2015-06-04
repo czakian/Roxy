@@ -10,4 +10,3 @@ type Headers         = MP.Map BS.ByteString BS.ByteString
 type RequestLine     = MP.Map BS.ByteString BS.ByteString
 type ByteString      = BS.ByteString
 type ResumableStream = ResumableSource IO BS.ByteString
-
